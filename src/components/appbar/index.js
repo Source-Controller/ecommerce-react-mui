@@ -1,5 +1,5 @@
-import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import AppbarMobile from "./AppbarMobile";
 import AppbarDesktop from "./AppbarDesktop";
