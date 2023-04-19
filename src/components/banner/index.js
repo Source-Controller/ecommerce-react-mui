@@ -1,18 +1,20 @@
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+// import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+// import useMediaQuery from "@mui/material/useMediaQuery";
 
 import {
   BannerContainer,
   BannerContent,
   BannerDescription,
   BannerImage,
+  BannerShopButton,
   BannerTitle,
 } from "../../styles/banner";
 
 const Banner = () => {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  // const theme = useTheme();
+  // const matches = useMedsiaQuery(theme.breakpoints.down("md"));
+
   return (
     <BannerContainer>
       <BannerImage src="/images/banner/banner.png" />
@@ -20,6 +22,7 @@ const Banner = () => {
         <Typography variant="h6">Huge collection</Typography>
         <BannerTitle variant="h2">New bags</BannerTitle>
         <BannerDescription variant="subtitle">lorem</BannerDescription>
+        <BannerShopButton color="primary">Shop Now</BannerShopButton>
       </BannerContent>
     </BannerContainer>
   );
