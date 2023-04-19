@@ -1,7 +1,8 @@
 import { styled } from "@mui/material/styles";
-import { Box, Typography, List } from "@mui/material";
+import { Box, Typography, List, IconButton } from "@mui/material";
 
-import { Colors } from "../theme";
+import { Colors, DRAWER_WIDTH } from "../theme";
+
 import "@fontsource/montez";
 
 // Container
@@ -38,10 +39,17 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
   left: 0,
   width: "100%",
   alignItems: "center",
-  zIndex: 99,
+  zIndex: 5,
   borderTop: `1px solid ${Colors.border}`,
 }));
 
 export const ActionIconsContainerDesktop = styled(Box)(() => ({
   flexGrow: 0,
+}));
+
+export const DrawerCloseButton = styled(IconButton)(() => ({
+  position: "absolute",
+  top: 10,
+  left: DRAWER_WIDTH,
+  zIndex: 1999,
 }));

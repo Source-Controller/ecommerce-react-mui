@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import { lighten } from "polished";
 
-export const DrawerWidth = 250;
+export const DRAWER_WIDTH = 250;
 
 export const Colors = {
   primary: "#5f2c3e",
@@ -39,7 +39,6 @@ const theme = createTheme({
       main: Colors.secondary,
     },
   },
-
   components: {
     MuiButton: {
       defaultProps: {
@@ -47,23 +46,10 @@ const theme = createTheme({
         disableElevation: true,
       },
     },
-    // MuiTooltip: {
-    //   defaultProps: {
-    //     arrow: true,
-    //   },
-    //   styleOverrides: {
-    //     tooltip: {
-    //       background: Colors.primary,
-    //     },
-    //     arrow: {
-    //       color: Colors.primary,
-    //     },
-    //   },
-    // },
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          width: DrawerWidth,
+          width: DRAWER_WIDTH,
           background: Colors.primary,
           color: Colors.secondary,
           borderRadius: "0px 100px 0px 0px",
@@ -96,6 +82,19 @@ const theme = createTheme({
         },
       },
     },
+    // MuiTooltip: {
+    //   defaultProps: {
+    //     arrow: true,
+    //   },
+    //   styleOverrides: {
+    //     tooltip: {
+    //       background: Colors.primary,
+    //     },
+    //     arrow: {
+    //       color: Colors.primary,
+    //     },
+    //   },
+    // },
   },
 });
 
