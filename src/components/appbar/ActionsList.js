@@ -1,78 +1,103 @@
-import { Divider, ListItemButton, ListItemIcon } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import Avatar from "@mui/material/Avatar";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import PersonIcon from "@mui/icons-material/Person";
 
 import {
-  MyList,
   ActionIconsContainerMobile,
   ActionIconsContainerDesktop,
 } from "../../styles/appbar";
 import { Colors } from "../../styles/theme";
+import { useUIContext } from "../../context/ui";
+import useAuthStore from "../../store/authStore";
+import UserMenu from "../accountMenu";
+
+const LOGIN_ROUTE = "/login";
 
 const ActionsList = ({ matches }) => {
+  const authUser = useAuthStore((state) => state.authUser);
+  const navigate = useNavigate();
+
   const Component = matches
     ? ActionIconsContainerMobile
     : ActionIconsContainerDesktop;
 
+  const { cart, setShowCart } = useUIContext();
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleLoginClick = () => {
+    navigate(LOGIN_ROUTE);
+  };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   return (
     <Component>
-      <MyList type="row">
-        <ListItemButton
+      <Tooltip title="Cart">
+        <IconButton
           sx={{
-            justifyContent: "center",
+            color: matches ? Colors.secondary : Colors.primary,
           }}
         >
-          <ListItemIcon
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              color: matches && Colors.secondary,
-            }}
-          >
-            <ShoppingCartIcon />
-          </ListItemIcon>
-        </ListItemButton>
+          <Badge badgeContent={cart && cart.length} color="secondary">
+            <ShoppingCartIcon onClick={() => setShowCart(true)} />
+          </Badge>
+        </IconButton>
+      </Tooltip>
 
-        <Divider orientation="vertical" flexItem />
-
-        <ListItemButton
+      <Tooltip title="Wishlist">
+        <IconButton
           sx={{
-            justifyContent: "center",
+            color: matches ? Colors.secondary : Colors.primary,
           }}
         >
-          <ListItemIcon
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              color: matches && Colors.secondary,
-            }}
-          >
-            <FavoriteIcon />
-          </ListItemIcon>
-        </ListItemButton>
+          <FavoriteIcon />
+        </IconButton>
+      </Tooltip>
 
-        <Divider orientation="vertical" flexItem />
-
-        <ListItemButton
-          sx={{
-            justifyContent: "center",
-          }}
-        >
-          <ListItemIcon
+      {authUser ? (
+        <Tooltip title="Account settings">
+          <IconButton
+            onClick={handleOpenUserMenu}
             sx={{
-              display: "flex",
-              justifyContent: "center",
-              color: matches && Colors.secondary,
+              color: matches ? Colors.secondary : Colors.primary,
             }}
+            aria-controls={Boolean(anchorElUser) ? "account-menu" : undefined}
+            aria-expanded={Boolean(anchorElUser) ? "true" : undefined}
+            aria-haspopup="true"
           >
             <PersonIcon />
-          </ListItemIcon>
-        </ListItemButton>
-
-        <Divider orientation="vertical" flexItem />
-      </MyList>
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Sign In">
+          <IconButton
+            onClick={handleLoginClick}
+            sx={{
+              color: matches ? Colors.secondary : Colors.primary,
+            }}
+            aria-controls={Boolean(anchorElUser) ? "account-menu" : undefined}
+            aria-expanded={Boolean(anchorElUser) ? "true" : undefined}
+            aria-haspopup="true"
+          >
+            <PersonIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+      <UserMenu anchorEl={anchorElUser} onClose={handleCloseUserMenu} />
     </Component>
   );
 };

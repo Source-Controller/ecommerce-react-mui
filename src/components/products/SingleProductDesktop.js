@@ -7,6 +7,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
 
 import useDialogModal from "../../hooks/useDialogModal";
+import useCart from "../../hooks/useCart";
 import {
   Product,
   ProductActionButton,
@@ -20,9 +21,12 @@ import ProductMeta from "./ProductMeta";
 
 const SingleProductDesktop = ({ product, matches }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const [isFav, setIsFav] = useState(false);
 
   const [ProductDetailsDialog, openProductDetailsDialog] =
     useDialogModal(ProductDetails);
+
+  const { addToCart, addToCartText } = useCart(product);
 
   const handleMouseEnter = () => {
     setShowOptions(true);
@@ -32,25 +36,33 @@ const SingleProductDesktop = ({ product, matches }) => {
     setShowOptions(false);
   };
 
+  const handleProductLike = () => {
+    setIsFav((prev) => !prev);
+  };
+
   return (
     <>
       <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <ProductImage src={product.image} />
-        <ProductFavButton isFav={0}>
+        <ProductImage src={product.images[0]} />
+        <ProductFavButton isFav={isFav} onClick={handleProductLike}>
           <FavoriteIcon />
         </ProductFavButton>
         {showOptions && (
-          <ProductAddToCartButton show={showOptions} variant="contained">
-            Add to cart
+          <ProductAddToCartButton
+            onClick={addToCart}
+            show={showOptions}
+            variant="contained"
+          >
+            {addToCartText}
           </ProductAddToCartButton>
         )}
         <ProductActionsWrapper show={showOptions}>
           <Stack direction="column">
             <ProductActionButton>
-              <ShareIcon color="primary" />
+              <ShareIcon />
             </ProductActionButton>
             <ProductActionButton onClick={openProductDetailsDialog}>
-              <FitScreenIcon color="primary" />
+              <FitScreenIcon />
             </ProductActionButton>
           </Stack>
         </ProductActionsWrapper>

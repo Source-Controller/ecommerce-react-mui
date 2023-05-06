@@ -4,12 +4,10 @@ import { ProductMetaWrapper } from "../../styles/products";
 const ProductMeta = ({ product, matches }) => {
   return (
     <ProductMetaWrapper>
-      <Typography variant={matches ? "h6" : "h5"} lineHeight={2}>
-        {product.name}
+      <Typography variant="subtitle1" lineHeight={2}>
+        {product.title}
       </Typography>
-      <Typography variant={matches ? "caption" : "body1"}>
-        ${product.price}
-      </Typography>
+      <Typography variant={matches ? "h5" : "h6"}>${product.price}</Typography>
     </ProductMetaWrapper>
   );
 };

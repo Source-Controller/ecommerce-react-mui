@@ -16,9 +16,9 @@ export const Product = styled(Box)(({ theme }) => ({
 
 export const ProductImage = styled("img")(({ src, theme }) => ({
   src: `url(${src})`,
+  objectFit: "cover",
   width: "100%",
-  background: Colors.light_gray,
-  padding: "10px",
+  borderRadius: "4px",
   [theme.breakpoints.down("md")]: {
     width: "80%",
     padding: "24px",
@@ -28,6 +28,12 @@ export const ProductImage = styled("img")(({ src, theme }) => ({
 export const ProductActionButton = styled(IconButton)(() => ({
   background: Colors.white,
   margin: 4,
+  "&.MuiIconButton-root": {
+    "&:hover": {
+      color: Colors.primary,
+      background: Colors.white,
+    },
+  },
 }));
 
 export const ProductFavButton = styled(ProductActionButton, {
@@ -36,8 +42,9 @@ export const ProductFavButton = styled(ProductActionButton, {
   color: isFav ? Colors.primary : Colors.light,
   [theme.breakpoints.up("md")]: {
     position: "absolute",
-    right: 0,
-    top: 0,
+    right: "5px",
+    top: "5px",
+    background: isFav ? Colors.secondary : Colors.white,
   },
 }));
 
@@ -50,7 +57,7 @@ export const ProductAddToCartButton = styled(Button, {
   opacity: 0.9,
   [theme.breakpoints.up("md")]: {
     position: "absolute",
-    bottom: "2%",
+    bottom: "15px",
     width: "300px",
     padding: "10px 5px",
   },
@@ -72,8 +79,8 @@ export const ProductActionsWrapper = styled(Box, {
   [theme.breakpoints.up("md")]: {
     display: show ? "visible" : "none",
     position: "absolute",
-    right: 0,
-    top: "20%",
+    right: "5px",
+    top: "55px",
     animation:
       show &&
       `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,

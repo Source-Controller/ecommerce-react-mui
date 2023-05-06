@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Stack } from "@mui/material";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -15,35 +16,40 @@ import {
   ProductImage,
 } from "../../styles/products";
 import ProductMeta from "./ProductMeta";
+import useCart from "../../hooks/useCart";
 
 const SingleProduct = ({ product, matches }) => {
-  const [
-    ProductDetailsDialog,
-    openProductDetailsDialog,
-    closeProductDetailsDialog,
-  ] = useDialogModal(ProductDetails);
+  const [ProductDetailsDialog, openProductDetailsDialog] =
+    useDialogModal(ProductDetails);
+
+  const { addToCart, addToCartText } = useCart(product);
+  const [isFav, setIsFav] = useState(false);
+
+  const handleProductLike = () => {
+    setIsFav((prev) => !prev);
+  };
 
   return (
     <>
       <Product>
-        <ProductImage src={product.image} />
+        <ProductImage src={product.images[0]} />
         <ProductMeta product={product} matches={matches} />
         <ProductActionsWrapper>
           <Stack direction="row">
-            <ProductFavButton isFav={0}>
+            <ProductFavButton isFav={isFav} onClick={handleProductLike}>
               <FavoriteIcon />
             </ProductFavButton>
             <ProductActionButton>
-              <ShareIcon color="primary" />
+              <ShareIcon />
             </ProductActionButton>
             <ProductActionButton onClick={openProductDetailsDialog}>
-              <FitScreenIcon color="primary" />
+              <FitScreenIcon />
             </ProductActionButton>
           </Stack>
         </ProductActionsWrapper>
       </Product>
-      <ProductAddToCartButton variant="contained">
-        Add to cart
+      <ProductAddToCartButton onClick={addToCart} variant="contained">
+        {addToCartText}
       </ProductAddToCartButton>
       <ProductDetailsDialog product={product} />
     </>

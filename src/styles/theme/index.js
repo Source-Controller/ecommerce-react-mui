@@ -19,7 +19,7 @@ export const Colors = {
   ///////////////
   // Grays
   ///////////////
-  dim_grey: "#696969",
+  dim_gray: "#696969",
   dove_gray: "#d5d5d5",
   body_bg: "#f3f6f9",
   light_gray: "rgb(230,230,230)",

@@ -5,10 +5,10 @@ import { Colors } from "../theme";
 
 export const BannerContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
   width: "100%",
-  height: "100%",
+  height: "100vh",
   padding: 0,
+  marginTop: "10px",
   background: Colors.light_gray,
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
@@ -22,19 +22,24 @@ export const BannerContent = styled(Box)(() => ({
   justifyContent: "center",
   alignItems: "center",
   maxWidth: 420,
-  padding: "30px",
+  padding: "30px 80px",
 }));
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
   lineHeight: 1.5,
-  fontSize: "72px",
+  fontSize: "64px",
   marginBottom: "20px",
+  [theme.breakpoints.down("md")]: {
+    fontSize: "54px",
+  },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "42px",
+    fontSize: "44px",
   },
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
   lineHeight: 1.25,
   letterSpacing: 1.25,
   marginBottom: "3em",
@@ -47,13 +52,11 @@ export const BannerDescription = styled(Typography)(({ theme }) => ({
 
 export const BannerImage = styled("img")(({ src, theme }) => ({
   src: `url(${src})`,
-  width: "500px",
-  [theme.breakpoints.down("md")]: {
-    width: "350px",
-  },
+  width: "50%",
+  objectFit: "cover",
   [theme.breakpoints.down("sm")]: {
-    width: "320px",
     height: "300px",
+    width: "100%",
   },
 }));
 
@@ -67,11 +70,15 @@ export const BannerShopButton = styled(Button, {
     props.color === "secondaary" && styles.secondary,
   ],
 })(({ theme }) => ({
-  padding: "20px 30px",
+  padding: "20px 100px",
   fontWeight: "bold",
   fontSize: "16px",
+  [theme.breakpoints.down("md")]: {
+    padding: "10px 70px",
+    fontSize: "14px",
+  },
   [theme.breakpoints.down("sm")]: {
-    padding: "10px 20px",
+    padding: "10px 50px",
     fontSize: "14px",
   },
 }));

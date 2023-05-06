@@ -16,7 +16,7 @@ const AppbarMobile = ({ matches }) => {
         <MenuIcon />
       </IconButton>
       <AppbarHeader textAlign={"center"} variant="h4">
-        My bags
+        Store
       </AppbarHeader>
       <IconButton onClick={() => setShowSearchBox(true)}>
         <SearchIcon />

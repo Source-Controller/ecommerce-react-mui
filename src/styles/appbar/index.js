@@ -1,34 +1,36 @@
 import { styled } from "@mui/material/styles";
-import { Box, Typography, List, IconButton } from "@mui/material";
-
-import { Colors, DRAWER_WIDTH } from "../theme";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import IconButton from "@mui/material/IconButton";
 
 import "@fontsource/montez";
 
-// Container
+import { Colors, DRAWER_WIDTH } from "../theme";
+
 export const AppbarContainer = styled(Box)(() => ({
   display: "flex",
   marginTop: 4,
   justifyContent: "center",
   alignItems: "center",
-  padding: "2px 8px",
 }));
 
 // Header
 export const AppbarHeader = styled(Typography)(() => ({
-  padding: "4px",
-  flexGrow: 1,
   fontSize: "4em",
   fontFamily: "'Montez', 'cursive'",
-  color: Colors.secondary,
+  color: Colors.primary,
+  flexGrow: 1,
+  letterSpacing: ".2rem",
 }));
 
 // List
 export const MyList = styled(List)(({ type }) => ({
   display: type === "row" ? "flex" : "block",
-  flexGrow: 3,
+  flexGrow: 2,
   justifyContent: "center",
   alignItems: "center",
+  fontSize: "18px",
 }));
 
 export const ActionIconsContainerMobile = styled(Box)(() => ({
@@ -39,7 +41,8 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
   left: 0,
   width: "100%",
   alignItems: "center",
-  zIndex: 5,
+  justifyContent: "space-evenly",
+  zIndex: 2,
   borderTop: `1px solid ${Colors.border}`,
 }));
 
