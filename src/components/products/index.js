@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { useTheme } from "@mui/material/styles";
-import { Container, Grid } from "@mui/material";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SingleProduct from "./SingleProduct";
-import SingleProductDesktop from "./SingleProductDesktop";
-import AppPagination from "../pagination";
 import { usePagination } from "../../hooks/usePagination";
 import ProductsService from "../../api/services/ProductsService";
+import AppPagination from "../pagination";
+import SingleProductDesktop from "./SingleProductDesktop";
+import SingleProduct from "./SingleProduct";
 
 const PRODUCTS_PER_PAGE = 9;
 const PRODUCTS_TOTAL = 200;

@@ -17,16 +17,19 @@ import {
 } from "../../styles/products";
 import ProductMeta from "./ProductMeta";
 import useCart from "../../hooks/useCart";
+import useWishlist from "../../hooks/useWishlist";
 
 const SingleProduct = ({ product, matches }) => {
   const [ProductDetailsDialog, openProductDetailsDialog] =
     useDialogModal(ProductDetails);
 
   const { addToCart, addToCartText } = useCart(product);
+  const { handleLikeClick } = useWishlist(product);
   const [isFav, setIsFav] = useState(false);
 
   const handleProductLike = () => {
     setIsFav((prev) => !prev);
+    handleLikeClick();
   };
 
   return (

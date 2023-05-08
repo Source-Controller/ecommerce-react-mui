@@ -37,7 +37,7 @@ axiosPrivate.interceptors.request.use(
     return config;
   },
 
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 axiosPrivate.interceptors.response.use(
@@ -52,7 +52,7 @@ axiosPrivate.interceptors.response.use(
       return axiosPrivate(originalRequest);
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosPublic;

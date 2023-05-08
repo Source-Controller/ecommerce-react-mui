@@ -24,6 +24,8 @@ const useValidation = (value, validations) => {
             setContentError(validations[validation] !== value);
             break;
           }
+          break;
+        default:
       }
     }
   }, [value, validations]);

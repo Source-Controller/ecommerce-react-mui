@@ -1,11 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { Outlet } from "react-router-dom";
 import useAuthStore from "../../auth/useAuth";
 import AuthService from "../../api/services/AuthService";
 
 const PersistLogin = () => {
   const authStore = useAuthStore();
-  const accessToken = useAuthStore((state) => state.accessToken);
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
 
   useEffect(() => {
@@ -33,7 +32,7 @@ const PersistLogin = () => {
       isMounted && authStore.setRequestLoading(true);
     };
 
-    if (!accessToken) {
+    if (!authStore.accessToken) {
       verifyRefreshToken();
     }
 

@@ -9,7 +9,7 @@ class ProductsService {
 
   static async getProductsPerPage({ offset, limit }) {
     const res = await axiosPublic.get(
-      `/products?offset=${offset}&limit=${limit}`
+      `/products?offset=${offset}&limit=${limit}`,
     );
     return res.data;
   }

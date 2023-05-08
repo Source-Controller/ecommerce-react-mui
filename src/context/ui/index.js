@@ -7,7 +7,9 @@ export const UIProvider = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [showWishlist, setShowWishlist] = useState(false);
 
   return (
     <UIContext.Provider
@@ -20,6 +22,10 @@ export const UIProvider = ({ children }) => {
         setShowCart,
         cart,
         setCart,
+        wishlist,
+        setWishlist,
+        showWishlist,
+        setShowWishlist,
       }}
     >
       {children}

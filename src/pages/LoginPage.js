@@ -99,7 +99,7 @@ const SignIn = () => {
   const linkToSignUp = (
     <Box sx={{ position: "absolute", bottom: "20px", left: "20px" }}>
       <Typography variant="body2" gutterBottom>
-        Don't have an account yet?
+        {`Don${"&apos;"}t have an account yet?`}
       </Typography>
       <Button variant="outlined" component={Link} to={SIGN_UP_ROUTE}>
         Sign Up

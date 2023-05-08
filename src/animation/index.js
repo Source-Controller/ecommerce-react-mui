@@ -23,6 +23,7 @@ const flipHorizontalBottom = keyframes`
  * animation text-pop-up-top
  * ----------------------------------------
  */
+
 export const textPopUpTop = keyframes` 
   0% {
     -webkit-transform: translateY(0);
@@ -48,6 +49,7 @@ export const textPopUpTop = keyframes`
  * animation slide-in-bottom
  * ----------------------------------------
  */
+
 export const slideInBottom = keyframes`
   0% {
     -webkit-transform: translateY(50px);
@@ -67,6 +69,7 @@ export const slideInBottom = keyframes`
  * animation slide-in-right
  * ----------------------------------------
  */
+
 export const slideInRight = keyframes`
   0% {
     -webkit-transform: translateX(50px);

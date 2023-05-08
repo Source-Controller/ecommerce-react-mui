@@ -1,6 +1,6 @@
 import useLocalStorage from "./useLocalStorage";
 
-export const useStoredInput = (key, initialValue) => {
+const useStoredInput = (key, initialValue) => {
   const [value, setValue] = useLocalStorage(key, initialValue);
 
   const attributes = {

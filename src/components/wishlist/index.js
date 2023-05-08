@@ -18,33 +18,40 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { Colors } from "../../styles/theme";
 import { useUIContext } from "../../context/ui";
 
-const Cart = () => {
-  const { cart, setCart, showCart, setShowCart, wishlist, setWishlist } =
-    useUIContext();
+const Wishlist = () => {
+  const {
+    wishlist,
+    setWishlist,
+    showWishlist,
+    setShowWishlist,
+    cart,
+    setCart,
+  } = useUIContext();
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const removeItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setWishlist(wishlist.filter((item) => item.id !== id));
   };
 
-  const moveToWishlist = (product) => {
-    setWishlist([...wishlist, product]);
+  const moveToCart = (product) => {
+    setCart([...cart, product]);
     removeItem(product.id);
   };
 
-  const cartEmptyContent = (
-    <Typography variant={matches ? "h5" : "h3"} color={Colors.black}>
-      Your cart is empty
+  const wishlistEmptyContent = (
+    <Typography variant={matches ? "h6" : "h5"} color={Colors.black}>
+      Click <FavoriteIcon /> to add products to your wishlist
     </Typography>
   );
 
-  const cartFilledContent = cart.map((item) => (
+  const wishlistFilledContent = wishlist.map((item) => (
     <>
       <ListItem
         key={item.id}
@@ -84,12 +91,12 @@ const Cart = () => {
               right: 0,
             }}
           >
-            <Tooltip title="Move to wishlist">
-              <IconButton onClick={() => moveToWishlist(item)}>
-                <FavoriteIcon />
+            <Tooltip title="Move to cart">
+              <IconButton onClick={() => moveToCart(item)}>
+                <ShoppingCartIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Remove from cart">
+            <Tooltip title="Remove from wishlist">
               <IconButton onClick={() => removeItem(item.id)}>
                 <DeleteIcon />
               </IconButton>
@@ -103,8 +110,8 @@ const Cart = () => {
 
   return (
     <Drawer
-      open={showCart}
-      onClose={() => setShowCart(false)}
+      open={showWishlist}
+      onClose={() => setShowWishlist(false)}
       anchor="right"
       PaperProps={{
         sx: {
@@ -121,29 +128,25 @@ const Cart = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {cart.length ? (
+        {wishlist.length ? (
           <>
             <Typography variant="h3" color={Colors.black}>
-              Your cart
+              Your wishlist
             </Typography>
-            <Button sx={{ mt: 4 }} onClick={() => setCart([])}>
-              Clear cart
+            <Button onClick={() => setWishlist([])} sx={{ mt: 4 }}>
+              Clear wishlist
             </Button>
             <Paper elevation={0} sx={{ mt: 2, width: "95%", p: 4 }}>
-              <List>{cartFilledContent}</List>
+              <List>{wishlistFilledContent}</List>
             </Paper>
-
-            <Button sx={{ mt: 4 }} variant="contained">
-              Proceed to payment
-            </Button>
           </>
         ) : (
-          cartEmptyContent
+          wishlistEmptyContent
         )}
       </Box>
-      <Button onClick={() => setShowCart(false)}>Close</Button>
+      <Button onClick={() => setShowWishlist(false)}>Close</Button>
     </Drawer>
   );
 };
 
-export default Cart;
+export default Wishlist;

@@ -16,7 +16,6 @@ const useProfile = () => {
     {
       onMutate() {
         authStore.setRequestLoading(true);
-        console.log(authStore.accessToken);
       },
       onSuccess(data) {
         authStore.setAuthUser(data);

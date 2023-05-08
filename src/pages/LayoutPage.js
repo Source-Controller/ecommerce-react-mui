@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Outlet } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { Container } from "@mui/material";
@@ -9,8 +9,9 @@ import theme from "../styles/theme";
 import Appbar from "../components/appbar";
 import SearchBox from "../components/search";
 import Footer from "../components/footer";
-import Cart from "../components/cart";
 import AppDrawer from "../components/drawer";
+import Cart from "../components/cart";
+import Wishlist from "../components/wishlist";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +31,7 @@ const LayoutPage = () => {
             <AppDrawer />
             <SearchBox />
             <Cart />
+            <Wishlist />
             <Outlet />
             <Footer />
           </QueryClientProvider>

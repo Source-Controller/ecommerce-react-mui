@@ -6,7 +6,7 @@ export const handleRequestError = (error) => {
     errorResponseData.error.forEach((el) =>
       toast.error(el.message, {
         position: "top-right",
-      })
+      }),
     );
   } else {
     toast.error(errorResponseData.message, {

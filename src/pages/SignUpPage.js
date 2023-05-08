@@ -96,7 +96,7 @@ const SignUpPage = () => {
       setErrMsg(error.message);
       errRef.current?.focus();
     }
-  }, [error]);
+  }, [status, error]);
 
   useEffect(() => {
     setErrMsg("");
@@ -295,7 +295,7 @@ const SignUpPage = () => {
     </FormHeader>
   );
 
-  let content =
+  const content =
     status === "success" ? (
       SuccessHeader
     ) : (

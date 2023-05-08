@@ -1,20 +1,17 @@
-import {
-  Box,
-  Button,
-  Grid,
-  ListItemText,
-  Typography,
-  List,
-  Stack,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import ListItemText from "@mui/material/ListItemText";
+import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import SendIcon from "@mui/icons-material/Send";
 
-import { FooterTitle } from "../../styles/footer";
-import { SubscribeTextField } from "../../styles/footer";
+import { FooterTitle, SubscribeTextField } from "../../styles/footer";
 import { Colors } from "../../styles/theme";
 
 const Footer = () => {

@@ -1,4 +1,4 @@
-import { Component, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useDialogModal = (Component) => {
   const [open, setOpen] = useState(false);

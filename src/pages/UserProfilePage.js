@@ -9,14 +9,14 @@ import useAuthStore from "../store/authStore";
 import useProfile from "../auth/useProfile";
 
 const UserProfilePage = () => {
-  const authStore = useAuthStore();
-  const authUser = authStore?.authUser;
+  const authUser = useAuthStore((state) => state.authUser);
   const fileRef = useRef();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
   const [uploaded, setUploaded] = useState(null);
+
   useEffect(() => {
     if (authUser) {
       setUsername(authUser.name);
@@ -60,7 +60,7 @@ const UserProfilePage = () => {
       alignItems="center"
       height="80vh"
     >
-      {authUser && (
+      {profile && (
         <>
           <Box position="relative" sx={{ padding: "0 60px" }}>
             <Avatar

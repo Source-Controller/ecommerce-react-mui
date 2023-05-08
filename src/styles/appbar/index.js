@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
 
 import "@fontsource/montez";
 
@@ -15,7 +16,6 @@ export const AppbarContainer = styled(Box)(() => ({
   alignItems: "center",
 }));
 
-// Header
 export const AppbarHeader = styled(Typography)(() => ({
   fontSize: "4em",
   fontFamily: "'Montez', 'cursive'",
@@ -24,7 +24,6 @@ export const AppbarHeader = styled(Typography)(() => ({
   letterSpacing: ".2rem",
 }));
 
-// List
 export const MyList = styled(List)(({ type }) => ({
   display: type === "row" ? "flex" : "block",
   flexGrow: 2,
@@ -40,6 +39,7 @@ export const ActionIconsContainerMobile = styled(Box)(() => ({
   bottom: 0,
   left: 0,
   width: "100%",
+  padding: "5px 0",
   alignItems: "center",
   justifyContent: "space-evenly",
   zIndex: 2,
@@ -55,4 +55,14 @@ export const DrawerCloseButton = styled(IconButton)(() => ({
   top: 10,
   left: DRAWER_WIDTH,
   zIndex: 1999,
+}));
+
+export const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    background: Colors.white,
+    border: `1px solid ${Colors.primary}`,
+    [theme.breakpoints.down("md")]: {
+      border: `1px solid ${Colors.secondary}`,
+    },
+  },
 }));

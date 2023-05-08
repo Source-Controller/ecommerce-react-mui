@@ -11,7 +11,7 @@ const useVerifyEmail = () => {
       // onSuccess: (data) => {
       //   setAvailable(data.isAvailable);
       // },
-    }
+    },
   );
 
   return [verifyEmailMutation, available, setAvailable];

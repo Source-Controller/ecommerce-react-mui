@@ -1,14 +1,7 @@
-import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import MenuItem from "@mui/material/MenuItem";
 import InputBase from "@mui/material/InputBase";
 import ListItemButton from "@mui/material/ListItemButton";
 
@@ -54,7 +47,6 @@ function ResponsiveAppBar({ matches }) {
     color: "inherit",
     "& .MuiInputBase-input": {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create("width"),
       width: "100%",
@@ -119,9 +111,7 @@ function ResponsiveAppBar({ matches }) {
             ))}
           </MyList>
 
-          <Search
-          //  onClick={() => setShowSearchBox(true)}
-          >
+          <Search onClick={() => setShowSearchBox(true)}>
             <SearchIconWrapper>
               <SearchIcon sx={{ color: Colors.dim_gray }} />
             </SearchIconWrapper>
@@ -130,7 +120,6 @@ function ResponsiveAppBar({ matches }) {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-
           <ActionsList matches={matches} />
         </Toolbar>
       </Container>

@@ -8,6 +8,7 @@ import FitScreenIcon from "@mui/icons-material/FitScreen";
 
 import useDialogModal from "../../hooks/useDialogModal";
 import useCart from "../../hooks/useCart";
+import useWishlist from "../../hooks/useWishlist";
 import {
   Product,
   ProductActionButton,
@@ -27,6 +28,7 @@ const SingleProductDesktop = ({ product, matches }) => {
     useDialogModal(ProductDetails);
 
   const { addToCart, addToCartText } = useCart(product);
+  const { handleLikeClick } = useWishlist(product);
 
   const handleMouseEnter = () => {
     setShowOptions(true);
@@ -38,6 +40,7 @@ const SingleProductDesktop = ({ product, matches }) => {
 
   const handleProductLike = () => {
     setIsFav((prev) => !prev);
+    handleLikeClick();
   };
 
   return (
