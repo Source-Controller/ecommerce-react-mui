@@ -7,17 +7,6 @@ import { keyframes } from "@mui/system";
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
 
-const flipHorizontalBottom = keyframes`
-  0% {
-    -webkit-transform: rotateX(0);
-            transform: rotateX(0);
-  }
-  100% {
-    -webkit-transform: rotateX(-180deg);
-            transform: rotateX(-180deg);
-  }
-`;
-
 /**
  * ----------------------------------------
  * animation text-pop-up-top

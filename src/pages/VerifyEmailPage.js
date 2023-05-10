@@ -15,6 +15,7 @@ import { useValidatedInput } from "../hooks/useValidatedInput";
 import useVerifyEmail from "../auth/useVerifyEmail";
 
 const SIGN_UP_PASSWORD = "/signup/password";
+// eslint-disable-next-line
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const SIGN_IN_ROUTE = "/login";
 
@@ -37,6 +38,7 @@ const VerifyEmailPage = () => {
 
   useEffect(() => {
     setAvailable(true);
+    // eslint-disable-next-line
   }, [email]);
 
   useEffect(() => {

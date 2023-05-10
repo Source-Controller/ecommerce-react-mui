@@ -8,7 +8,6 @@ const useRefreshToken = () => {
   const refreshAccess = async () => {
     try {
       const res = await AuthService.refreshTokens(currentRefreshToken);
-      console.log("received new tokens");
       store.setAccessToken(res.data?.access_token);
       localStorage.setItem("refresh", res.data?.refresh_token);
       return res.data?.access_token;

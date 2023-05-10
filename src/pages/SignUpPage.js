@@ -114,7 +114,6 @@ const SignUpPage = () => {
 
     signUp(newUser);
     if (status === "success") {
-      console.log("user added");
       resetFormValues();
     }
   };
