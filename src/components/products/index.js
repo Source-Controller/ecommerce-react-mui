@@ -10,6 +10,7 @@ import ProductsService from "../../api/services/ProductsService";
 import AppPagination from "../pagination";
 import SingleProductDesktop from "./SingleProductDesktop";
 import SingleProduct from "./SingleProduct";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const PRODUCTS_PER_PAGE = 9;
 const PRODUCTS_TOTAL = 200;
@@ -18,7 +19,7 @@ const Products = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  const { offset, handlePageChange } = usePagination(PRODUCTS_PER_PAGE);
+  const { offset, page, handlePageChange } = usePagination(PRODUCTS_PER_PAGE);
 
   const {
     data: products,
@@ -59,7 +60,7 @@ const Products = () => {
 
   return (
     <Container>
-      {isLoading && <>Loading</>}
+      {isLoading && <CircularProgress color="secondary" />}
       {error && <>{error.message}</>}
       {products && products.length > 0 && (
         <>
@@ -74,8 +75,9 @@ const Products = () => {
             {renderProducts}
           </Grid>
           <AppPagination
-            pagesCount={Math.ceil(PRODUCTS_TOTAL / PRODUCTS_PER_PAGE)}
+            page={page}
             handlePageChange={handlePageChange}
+            pagesCount={Math.ceil(PRODUCTS_TOTAL / PRODUCTS_PER_PAGE)}
           />
         </>
       )}

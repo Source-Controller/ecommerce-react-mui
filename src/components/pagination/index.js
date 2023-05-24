@@ -1,6 +1,7 @@
-import { Box, Pagination } from "@mui/material";
+import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
 
-const AppPagination = ({ pagesCount, handlePageChange }) => {
+const AppPagination = ({ page, handlePageChange, pagesCount }) => {
   return (
     <Box
       display="flex"
@@ -10,6 +11,7 @@ const AppPagination = ({ pagesCount, handlePageChange }) => {
     >
       <Pagination
         color="primary"
+        page={page}
         count={pagesCount}
         onChange={handlePageChange}
         shape="rounded"
