@@ -6,7 +6,6 @@ import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -40,20 +39,18 @@ const AppDrawer = () => {
         <List>
           {navbarItems.map((item, index) => (
             <>
-              <ListItemButton key={item}>
-                <ListItemText>
-                  <NavLink
-                    to={`${navbarRoutes[index]}`}
-                    style={({ isActive }) => {
-                      return {
-                        color: isActive ? Colors.secondary : Colors.white,
-                        textDecoration: "none",
-                      };
-                    }}
-                  >
-                    {item}
-                  </NavLink>
-                </ListItemText>
+              <ListItemButton
+                key={item}
+                component={NavLink}
+                to={`${navbarRoutes[index]}`}
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? Colors.secondary : Colors.white,
+                    textDecoration: "none",
+                  };
+                }}
+              >
+                {item}
               </ListItemButton>
               <MiddleDivider />
             </>
