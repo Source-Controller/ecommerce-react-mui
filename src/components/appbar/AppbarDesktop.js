@@ -12,10 +12,10 @@ import ActionsList from "./ActionsList";
 import SearchIcon from "@mui/icons-material/Search";
 import { Colors } from "../../styles/theme";
 
-const navbarItems = ["Home", "Categories", "Products", "Contact Us"];
-const navbarRoutes = ["/", "categories", "products", "contact"];
+const navbarItems = ["Home", "Categories", "Contact Us"];
+const navbarRoutes = ["/", "categories", "contact"];
 
-function ResponsiveAppBar({ matches }) {
+const ResponsiveAppBar = ({ matches }) => {
   const { setShowSearchBox } = useUIContext();
 
   const Search = styled("div")(({ theme }) => ({
@@ -125,5 +125,5 @@ function ResponsiveAppBar({ matches }) {
       </Container>
     </AppBar>
   );
-}
+};
 export default ResponsiveAppBar;

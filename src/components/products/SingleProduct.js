@@ -32,10 +32,14 @@ const SingleProduct = ({ product, matches }) => {
     handleLikeClick();
   };
 
+  const onImageError = (e) => {
+    e.target.src = "/images/product-placeholder.jpg";
+  };
+
   return (
     <>
       <Product>
-        <ProductImage src={product.images[0]} />
+        <ProductImage src={product.images[0]} onError={onImageError} />
         <ProductMeta product={product} matches={matches} />
         <ProductActionsWrapper>
           <Stack direction="row">

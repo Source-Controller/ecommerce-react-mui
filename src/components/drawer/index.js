@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { lighten } from "polished";
 import { styled } from "@mui/material/styles";
 
@@ -17,6 +18,9 @@ const MiddleDivider = styled((props) => (
   <Divider variant="middle" {...props} />
 ))``;
 
+const navbarItems = ["Home", "Categories", "Contact Us"];
+const navbarRoutes = ["/", "categories", "contact"];
+
 const AppDrawer = () => {
   const { drawerOpen, setDrawerOpen } = useUIContext();
 
@@ -34,25 +38,26 @@ const AppDrawer = () => {
       )}
       <Drawer open={drawerOpen} position>
         <List>
-          <ListItemButton>
-            <ListItemText>Home</ListItemText>
-          </ListItemButton>
-          <MiddleDivider />
-          <ListItemButton>
-            <ListItemText>Categories</ListItemText>
-          </ListItemButton>
-          <MiddleDivider />
-          <ListItemButton>
-            <ListItemText>Products</ListItemText>
-          </ListItemButton>
-          <MiddleDivider />
-          <ListItemButton>
-            <ListItemText>About us</ListItemText>
-          </ListItemButton>
-          <MiddleDivider />
-          <ListItemButton>
-            <ListItemText>Contact us</ListItemText>
-          </ListItemButton>
+          {navbarItems.map((item, index) => (
+            <>
+              <ListItemButton>
+                <ListItemText>
+                  <NavLink
+                    to={`${navbarRoutes[index]}`}
+                    style={({ isActive }) => {
+                      return {
+                        color: isActive ? Colors : Colors.white,
+                        textDecoration: "none",
+                      };
+                    }}
+                  >
+                    {item}
+                  </NavLink>
+                </ListItemText>
+              </ListItemButton>
+              <MiddleDivider />
+            </>
+          ))}
         </List>
       </Drawer>
     </>

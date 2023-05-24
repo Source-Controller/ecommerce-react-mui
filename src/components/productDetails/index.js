@@ -47,6 +47,10 @@ const ProductDetails = ({ product, open, onClose }) => {
   const { addToCart, addToCartText } = useCart(product);
   const { handleLikeClick, wishlistActionText } = useWishlist(product);
 
+  const onImageError = (e) => {
+    e.target.src = "/images/product-placeholder.jpg";
+  };
+
   return (
     <Dialog
       variant="permanent"
@@ -73,7 +77,7 @@ const ProductDetails = ({ product, open, onClose }) => {
       <DialogContent>
         <ProductDetailsWrapper flexDirection={matches ? "column" : "row"}>
           <Product sx={{ mr: 4 }}>
-            <ProductImage src={product.images[0]} />
+            <ProductImage src={product.images[0]} onError={onImageError} />
           </Product>
           <ProductDetailsInfoWrapper>
             <Typography variant="h4" sx={{ lineHeight: 2 }}>

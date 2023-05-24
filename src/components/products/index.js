@@ -13,7 +13,7 @@ import SingleProduct from "./SingleProduct";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const PRODUCTS_PER_PAGE = 9;
-const PRODUCTS_TOTAL = 200;
+const PRODUCTS_TOTAL = 180;
 
 const Products = () => {
   const theme = useTheme();
@@ -60,7 +60,11 @@ const Products = () => {
 
   return (
     <Container>
-      {isLoading && <CircularProgress color="secondary" />}
+      {isLoading && (
+        <Container display="flex" alignItems="center" justifyContent="center">
+          <CircularProgress color="secondary" />
+        </Container>
+      )}
       {error && <>{error.message}</>}
       {products && products.length > 0 && (
         <>

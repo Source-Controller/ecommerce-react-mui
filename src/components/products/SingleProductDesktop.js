@@ -24,6 +24,10 @@ const SingleProductDesktop = ({ product, matches }) => {
   const [showOptions, setShowOptions] = useState(false);
   const [isFav, setIsFav] = useState(false);
 
+  const onImageError = (e) => {
+    e.target.src = "/images/product-placeholder.jpg";
+  };
+
   const [ProductDetailsDialog, openProductDetailsDialog] =
     useDialogModal(ProductDetails);
 
@@ -46,7 +50,7 @@ const SingleProductDesktop = ({ product, matches }) => {
   return (
     <>
       <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <ProductImage src={product.images[0]} />
+        <ProductImage src={product.images[0]} onError={onImageError} />
         <ProductFavButton isFav={isFav} onClick={handleProductLike}>
           <FavoriteIcon />
         </ProductFavButton>
