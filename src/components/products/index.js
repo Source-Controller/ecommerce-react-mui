@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useTheme } from "@mui/material/styles";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -14,6 +15,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const PRODUCTS_PER_PAGE = 9;
 const PRODUCTS_TOTAL = 180;
+const PRODUCTS_KEY = "products";
 
 const Products = () => {
   const theme = useTheme();
@@ -26,15 +28,12 @@ const Products = () => {
     isLoading,
     error,
   } = useQuery(
-    ["products", offset],
+    [PRODUCTS_KEY, offset],
     async () =>
       await ProductsService.getProductsPerPage({
         offset: offset,
         limit: PRODUCTS_PER_PAGE,
-      }),
-    {
-      keepPreviousData: false,
-    }
+      })
   );
 
   const renderProducts = products?.map((product) => {
@@ -61,9 +60,14 @@ const Products = () => {
   return (
     <Container>
       {isLoading && (
-        <Container display="flex" alignItems="center" justifyContent="center">
+        <Box
+          height="100vh"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
           <CircularProgress color="secondary" />
-        </Container>
+        </Box>
       )}
       {error && <>{error.message}</>}
       {products && products.length > 0 && (

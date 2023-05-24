@@ -1,21 +1,20 @@
 import axiosPublic from "../axios";
-import API_ENDPOINTS from "../endpoints";
 
 class AuthService {
   static async verifyEmail(email) {
-    const res = await axiosPublic.post(API_ENDPOINTS.VERIFY_EMAIL, { email });
+    const res = await axiosPublic.post("/users/is-available", { email });
     return res.data.isAvailable;
   }
 
   static async signUp(newUser) {
-    const res = await axiosPublic.post(API_ENDPOINTS.CREATE_USER, {
+    const res = await axiosPublic.post("/users", {
       ...newUser,
     });
     return res.data;
   }
 
   static async signIn(email, password) {
-    const res = await axiosPublic.post(API_ENDPOINTS.LOGIN, {
+    const res = await axiosPublic.post("/auth/login", {
       email,
       password,
     });
@@ -23,7 +22,7 @@ class AuthService {
   }
 
   static async refreshTokens(refreshToken) {
-    const res = await axiosPublic.post(API_ENDPOINTS.REFRESH, {
+    const res = await axiosPublic.post("/auth/refresh-token", {
       refreshToken,
     });
     return res.data;

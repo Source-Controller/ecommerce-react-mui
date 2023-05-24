@@ -1,14 +1,13 @@
 import axiosPublic, { axiosPrivate } from "../axios";
-import API_ENDPOINTS from "../endpoints";
 
 class UsersService {
   static async getAllUsers() {
-    const res = await axiosPublic.get(API_ENDPOINTS.GET_ALL_USERS);
+    const res = await axiosPublic.get("/users");
     return res.data;
   }
 
   static async getMe() {
-    const res = await axiosPrivate.get(API_ENDPOINTS.USER_PROFILE);
+    const res = await axiosPrivate.get("/auth/profile");
     return res.data;
   }
 
@@ -23,7 +22,7 @@ class UsersService {
   }
 
   static async uploadFile(file) {
-    const res = await axiosPrivate.post(API_ENDPOINTS.UPLOAD_FILE, file, {
+    const res = await axiosPrivate.post("/files/upload", file, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return res.data;

@@ -1,15 +1,9 @@
 import axiosPublic from "../axios";
-import API_ENDPOINTS from "../endpoints";
 
 class ProductsService {
-  static async getAllProducts() {
-    const res = await axiosPublic.get(API_ENDPOINTS.GET_ALL_PRODUCTS);
-    return res.data;
-  }
-
   static async getProductsPerPage({ offset, limit }) {
     const res = await axiosPublic.get(
-      `/products?offset=${offset}&limit=${limit}`,
+      `/products?offset=${offset}&limit=${limit}`
     );
     return res.data;
   }
@@ -20,7 +14,7 @@ class ProductsService {
   }
 
   static async getCategories() {
-    const res = await axiosPublic.get(API_ENDPOINTS.CATEGORIES);
+    const res = await axiosPublic.get("/categories");
     return res.data;
   }
 

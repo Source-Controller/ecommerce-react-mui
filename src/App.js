@@ -25,8 +25,8 @@ function App() {
         <Route path="signup/password" element={<SignUpPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="users" element={<UsersPage />} />
-        {/* protected routes */}
 
+        {/* protected routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth />}>
             <Route path="profile" element={<UserProfilePage />} />

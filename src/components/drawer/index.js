@@ -18,8 +18,8 @@ const MiddleDivider = styled((props) => (
   <Divider variant="middle" {...props} />
 ))``;
 
-const navbarItems = ["Home", "Categories", "Contact Us"];
-const navbarRoutes = ["/", "categories", "contact"];
+const navbarItems = ["Home", "Categories"];
+const navbarRoutes = ["/", "categories"];
 
 const AppDrawer = () => {
   const { drawerOpen, setDrawerOpen } = useUIContext();
@@ -40,13 +40,13 @@ const AppDrawer = () => {
         <List>
           {navbarItems.map((item, index) => (
             <>
-              <ListItemButton>
+              <ListItemButton key={item}>
                 <ListItemText>
                   <NavLink
                     to={`${navbarRoutes[index]}`}
                     style={({ isActive }) => {
                       return {
-                        color: isActive ? Colors : Colors.white,
+                        color: isActive ? Colors.secondary : Colors.white,
                         textDecoration: "none",
                       };
                     }}

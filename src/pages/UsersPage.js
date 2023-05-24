@@ -8,7 +8,7 @@ const UsersPage = () => {
   const [users, setUsers] = useState([]);
   const queryClient = useQueryClient();
 
-  useQuery(["users"], UsersService.getAllUsers, {
+  useQuery([USERS_KEY], UsersService.getAllUsers, {
     onSuccess(data) {
       setUsers(data);
       queryClient.setQueryData(USERS_KEY, data);

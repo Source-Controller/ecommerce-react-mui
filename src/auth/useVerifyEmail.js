@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+
 import AuthService from "../api/services/AuthService";
 
 const useVerifyEmail = () => {
@@ -11,7 +12,7 @@ const useVerifyEmail = () => {
       // onSuccess: (data) => {
       //   setAvailable(data.isAvailable);
       // },
-    },
+    }
   );
 
   return [verifyEmailMutation, available, setAvailable];
